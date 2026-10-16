@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rémi Saint Dizier — Portfolio développeur web et IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f3fa;--surface:#fff;--ink:#2a1245;--muted:#6a5a80;--line:#ddd3ea;--accent:#5b21b6;--mark:#f2c14e;--mark-ink:#2a1245;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a0b2e;--surface:#26123f;--ink:#f3ecfb;--muted:#b9a7d1;--line:#3d2860;--accent:#c4a1ff;--mark:#7c3aed;--mark-ink:#f3ecfb}}
+:root[data-theme="dark"]{--bg:#1a0b2e;--surface:#26123f;--ink:#f3ecfb;--muted:#b9a7d1;--line:#3d2860;--accent:#c4a1ff;--mark:#7c3aed;--mark-ink:#f3ecfb}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "DM Sans",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;gap:1rem}
+.logo{font:800 1.25rem "Bricolage Grotesque",sans-serif;text-decoration:none}
+nav a{margin-left:1.25rem;text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+.theme{font:inherit;font-weight:500;padding:.45rem .9rem;border-radius:2rem;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;margin-left:1rem;white-space:nowrap}
+.theme:hover{background:var(--surface)}
+.hero{padding:3.5rem 0 3rem}
+h1{font:800 clamp(2.6rem,8vw,5.5rem)/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em;margin:0 0 1.5rem;max-width:14ch}
+h1 span{background:linear-gradient(transparent 62%,var(--mark) 62% 92%,transparent 92%)}
+.lead{max-width:38rem;color:var(--muted);font-size:1.2rem;margin:0 0 2rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.8rem 1.3rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:2px solid var(--ink)}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn.alt:hover{background:var(--surface)}
+.stats{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.stats b{display:block;font:800 2rem "Bricolage Grotesque",sans-serif}
+.stats small{color:var(--muted)}
+section{padding:3rem 0}
+h2{font:700 clamp(1.8rem,4vw,2.6rem)/1.1 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em;margin:0 0 .75rem}
+.sub{color:var(--muted);max-width:40rem;margin:0 0 2rem}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.skills div{background:var(--surface);padding:1.1rem 1.25rem}
+.skills h3{margin:0 0 .25rem;font:700 1.1rem "Bricolage Grotesque",sans-serif}
+.skills p{margin:0;color:var(--muted);font-size:.95rem}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.filters button{font:inherit;font-weight:500;padding:.4rem .9rem;border-radius:2rem;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.era{display:grid;grid-template-columns:9rem 1fr;gap:1.5rem;padding:0 0 2.5rem;position:relative}
+.era::before{content:"";position:absolute;left:8.25rem;top:.5rem;bottom:0;width:2px;background:var(--line)}
+.era:last-child::before{bottom:auto;height:1rem}
+.era::after{content:"";position:absolute;left:7.9rem;top:.55rem;width:.85rem;height:.85rem;border-radius:50%;background:var(--mark);border:2px solid var(--ink)}
+.era .when{font:700 1rem "Bricolage Grotesque",sans-serif;padding-right:1.5rem;text-align:right}
+.era .when small{display:block;font:400 .85rem "DM Sans",sans-serif;color:var(--muted)}
+.era h3{margin:0 0 .25rem;font:700 1.35rem "Bricolage Grotesque",sans-serif}
+.era .intro{color:var(--muted);margin:0 0 1rem}
+.repos{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.75rem}
+.repo{display:flex;flex-direction:column;gap:.35rem;padding:1rem;background:var(--surface);border:1px solid var(--line);border-radius:.4rem;text-decoration:none}
+.repo:hover{border-color:var(--accent)}
+.repo b{font-weight:700;word-break:break-word}
+.repo span{color:var(--muted);font-size:.92rem;flex:1}
+.repo em{font-style:normal;font-size:.8rem;font-weight:700;color:var(--accent)}
+.repo[hidden]{display:none}
+.xp{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.xp article{background:var(--surface);padding:1.4rem 1.5rem}
+.xp h3{margin:0;font:700 1.3rem "Bricolage Grotesque",sans-serif}
+.xp .meta{color:var(--muted);font-size:.95rem;margin:.15rem 0 .75rem}
+.xp ul{margin:0;padding-left:1.1rem}
+.xp li{margin:.2rem 0}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:2rem}
+.two h3{margin:0 0 .5rem;font:700 1.2rem "Bricolage Grotesque",sans-serif}
+.two p{margin:0 0 .4rem;color:var(--muted)}
+.contact{border-top:1px solid var(--line);margin-top:2rem;padding:3rem 0 4rem}
+footer{color:var(--muted);font-size:.9rem;padding-bottom:2rem}
+@media (max-width:40rem){nav{display:none}.era{grid-template-columns:1fr;gap:.5rem;padding-left:1.5rem}.era::before{left:.3rem}.era::after{left:0}.era .when{text-align:left;padding:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="logo" href="#">Rémi Saint Dizier</a>
+  <nav aria-label="Navigation principale"><a href="#experiences">Expériences</a><a href="#competences">Compétences</a><a href="#parcours">Projets</a><a href="#contact">Contact</a></nav>
+  <button type="button" id="theme" class="theme" aria-label="Changer de thème">Thème</button>
+</header>
+
+<main>
+<div class="hero">
+  <h1>Je développe des sites web et je cherche une <span>alternance</span> d'un an.</h1>
+  <p class="lead">Rémi Saint Dizier, en troisième année de Bachelor Développement &amp; IA à La Manu (Chartres). Je recherche un contrat d'apprentissage d'un an, dès que possible. Trois stages de sites vitrines et e-commerce, et des projets publiés sur GitHub depuis 2024.</p>
+  <div class="btns">
+    <a class="btn main" href="#parcours">Voir mes projets</a>
+    <a class="btn alt" href="https://github.com/goosti" target="_blank" rel="noopener">Profil GitHub</a>
+  </div>
+  <div class="stats">
+    <div><b>28</b><small>projets publics</small></div>
+    <div><b>3</b><small>stages de 6 semaines</small></div>
+    <div><b>3 sem. / 1 sem.</b><small>rythme entreprise / cours</small></div>
+  </div>
+</div>
+
+<section id="experiences">
+  <h2>Expériences</h2>
+  <p class="sub">Trois stages de six semaines, du plus récent au plus ancien.</p>
+  <div class="xp">
+    <article><h3>Deroulbien</h3><p class="meta">Stage, juin – juillet 2026. Vente d'un enrouleur de film plastique pour palettes.</p><ul><li>Refonte complète du site vitrine en HTML, CSS et JavaScript natifs.</li><li>Définition de l'identité visuelle : palette de couleurs et typographies.</li><li>Galerie photo filtrable et formulaire de contact.</li><li>Responsive design et prise en compte de l'accessibilité.</li></ul></article>
+    <article><h3>Atome3D Chartres</h3><p class="meta">Stage, mai – juin 2026. Équipements et imprimantes 3D.</p><ul><li>Maquette Figma d'un site e-commerce de produits personnalisables.</li><li>Étude comparative : WordPress/WooCommerce, Shopify, Amazon.</li><li>Mise en place du site sous WordPress et WooCommerce : catalogue, paiement, livraison.</li><li>Extension permettant aux clients de personnaliser les produits.</li></ul></article>
+    <article><h3>Ogone</h3><p class="meta">Stage, avril 2025. Solutions en réalité virtuelle.</p><ul><li>Création complète du site vitrine Cywiz VR avec Bootstrap Studio.</li><li>Refonte et optimisation du responsive.</li><li>Intégration de composants interactifs.</li><li>Initiation à Unity (développement 3D et VR).</li></ul></article>
+  </div>
+</section>
+
+<section id="competences">
+  <h2>Compétences</h2>
+  <p class="sub">Issues de ma formation, de mes stages et de mes dépôts.</p>
+  <div class="skills">
+    <div><h3>Développement web</h3><p>HTML, CSS, JavaScript, PHP, Symfony, React.</p></div>
+    <div><h3>Data &amp; IA</h3><p>Python, bases de données, SQL, machine learning, IA.</p></div>
+    <div><h3>CMS &amp; e-commerce</h3><p>WordPress, WooCommerce.</p></div>
+    <div><h3>3D</h3><p>Unity, Blender.</p></div>
+    <div><h3>Design</h3><p>UX/UI, Figma, Illustrator, Photoshop.</p></div>
+    <div><h3>Responsive &amp; accessibilité</h3><p>Sites adaptés à tous les écrans, vus en cours et mis en pratique en stage chez Deroulbien et Ogone.</p></div>
+    <div><h3>Gestion de projet</h3><p>Vue en cours et en stage : maquettes, études comparatives de solutions, choix de l'identité visuelle.</p></div>
+    <div><h3>Outils</h3><p>GitHub, Pack Office.</p></div>
+  </div>
+</section>
+
+<section id="parcours">
+  <h2>Projets, du plus récent au plus ancien</h2>
+  <p class="sub">Chaque projet est un dépôt public. Les dates indiquent la dernière mise à jour.</p>
+  <div class="filters" role="group" aria-label="Filtrer par langage" id="filters"></div>
+  <div id="timeline"></div>
+</section>
+</main>
+
+<section id="formation">
+  <div class="two">
+    <div><h2>Formation</h2><h3>Bachelor Développement &amp; IA</h3><p>Campus La Manu, Chartres, 2024 – 2027. Alternance : 3 semaines en entreprise, 1 semaine en cours.</p><h3>Baccalauréat STMG</h3><p>Lycée Fulbert, Chartres, 2023.</p></div>
+    <div><h2>Qualités et loisirs</h2><h3>Soft skills</h3><p>Autonomie, gestion du stress, esprit d'équipe, capacité d'adaptation.</p><h3>Loisirs</h3><p>Tir à l'arc (Flèche jaune)</p><p>Jeux vidéo (Warhammer, Cyberpunk 2077, Minecraft)</p><p>Comics (Marvel, DC Comics, Invincible)</p><p>Manga (Dragon Ball, JoJo's Bizarre Adventure)</p></div>
+  </div>
+</section>
+
+<div class="contact" id="contact">
+  <h2>Me contacter</h2>
+  <p class="sub">Je recherche un contrat d'apprentissage d'un an. Écris-moi par e-mail, ou regarde mon code sur GitHub.</p>
+  <div class="btns"><a class="btn main" href="mailto:remisd@orange.fr">remisd@orange.fr</a><a class="btn alt" href="https://github.com/goosti" target="_blank" rel="noopener">github.com/goosti</a></div>
+</div>
+<footer>© Rémi Saint Dizier — projets issus de mes dépôts GitHub publics.</footer>
+</div>
+
+<script>
+const U="https://github.com/goosti/";
+const eras=[
+ {t:"2026",s:"janv. – avr.",h:"Frameworks et architecture",i:"Symfony, design system et applications plus structurées.",r:[
+  ["BDE","HTML","Site pour un bureau des étudiants."],
+  ["cataloguefilms","PHP","Catalogue de films en PHP."],
+  ["TD-CSSA","HTML","Travaux dirigés CSS."],
+  ["Blog","PHP","Application de blog."],
+  ["corporate","","Site corporate."],
+  ["First-app","PHP","Première application."],
+  ["Symfony","HTML","Prise en main de Symfony."],
+  ["design-sytem-bem","HTML","Design system basé sur la méthodologie BEM."]]},
+ {t:"2025",s:"oct. – déc.",h:"Programmation orientée objet",i:"TP et TD de POO en PHP, premiers exercices en Python.",r:[
+  ["TP-POO-Exo","PHP","Exercices de POO."],
+  ["TD-Python","","Travaux dirigés Python."],
+  ["TP-POO","PHP","Travaux pratiques de POO."],
+  ["testCss","HTML","Tests et essais CSS."],
+  ["TD-Flyjet","PHP","TD autour d'un site de compagnie aérienne."],
+  ["TodoPOO_1-2","PHP","Liste de tâches en POO."]]},
+ {t:"2025",s:"févr. – mars",h:"PHP, SQL et premiers projets complets",i:"Du PHP procédural à des projets avec base de données.",r:[
+  ["revisions","PHP","Révisions PHP."],
+  ["lsr","PHP","Projet PHP."],
+  ["trombinoscope","PHP","Trombinoscope dynamique."],
+  ["php_evaluation_remi","PHP","Évaluation PHP."],
+  ["sqlEval2","","Évaluation SQL (2)."],
+  ["sqlEval","","Évaluation SQL."],
+  ["blog-php-procedural","PHP","Blog en PHP procédural."],
+  ["projet_livre","PHP","Projet autour de livres."],
+  ["phpExercice","PHP","Premiers exercices PHP."]]},
+ {t:"2024",s:"déc.",h:"Les bases du web",i:"Mes premiers sites en HTML et CSS, et un script JavaScript.",r:[
+  ["projet-site-agence-de-voyage","CSS","Site d'une agence de voyage."],
+  ["evasion-et-decouverte","CSS","Site de voyage."],
+  ["citation","JavaScript","Script JavaScript autour de citations."]]}
+];
+const tl=document.getElementById("timeline"),fl=document.getElementById("filters");
+const langs=["Tous",...new Set(eras.flatMap(e=>e.r.map(x=>x[1]).filter(Boolean)))];
+tl.innerHTML=eras.map(e=>`<div class="era"><div class="when">${e.t}<small>${e.s}</small></div><div><h3>${e.h}</h3><p class="intro">${e.i}</p><div class="repos">${e.r.map(x=>`<a class="repo" href="${U}${x[0]}" target="_blank" rel="noopener" data-l="${x[1]}"><b>${x[0]}</b><span>${x[2]}</span>${x[1]?`<em>${x[1]}</em>`:""}</a>`).join("")}</div></div></div>`).join("");
+fl.innerHTML=langs.map((l,i)=>`<button type="button" aria-pressed="${i==0}" data-f="${l}">${l}</button>`).join("");
+fl.addEventListener("click",ev=>{const b=ev.target.closest("button");if(!b)return;
+ fl.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+ document.querySelectorAll(".repo").forEach(r=>r.hidden=b.dataset.f!=="Tous"&&r.dataset.l!==b.dataset.f);
+ document.querySelectorAll(".era").forEach(e=>e.hidden=!e.querySelector(".repo:not([hidden])"));});
+const root=document.documentElement,tb=document.getElementById("theme"),mq=matchMedia("(prefers-color-scheme:dark)");
+let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+if(saved)root.dataset.theme=saved;
+const isDark=()=>root.dataset.theme?root.dataset.theme==="dark":mq.matches;
+const label=()=>{tb.textContent=isDark()?"Mode clair":"Mode sombre"};
+label();
+tb.addEventListener("click",()=>{const t=isDark()?"light":"dark";root.dataset.theme=t;try{localStorage.setItem("theme",t)}catch(e){}label()});
+mq.addEventListener("change",label);
+</script>
+</body>
+</html>
